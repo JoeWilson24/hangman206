@@ -13,10 +13,10 @@ def ask_for_input():
 
 #Function to convert guessed letter to lower case check whether guessed letter is in word
 def check_guess(guess):
-    lower_guess = (guess.lower())
-    if lower_guess in word:
-        print(f"Good guess! {lower_guess} is in the word.")
+    lower_case_guess = (guess.lower())
+    if lower_case_guess in word:
+        print(f"Good guess! {lower_case_guess} is in the word.")
     else:
-        print(f"Sorry, {lower_guess} is not in the word. Try again.")
+        print(f"Sorry, {lower_case_guess} is not in the word. Try again.")
 
 ask_for_input()
