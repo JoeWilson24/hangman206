@@ -20,20 +20,25 @@ class Hangman:
             self.num_letters -= 1                                           #Reduce number of letters by 1 for correct guess
             print(f"There are {self.num_letters} letters left to guess")
             print(self.word_guessed)
+            print("")
                     
         else:
             print(f"Sorry, {lower_case_guess} is not in the word. Try again.")
             print(f"Guessed letters: {self.list_of_guesses}")
             self.num_lives -= 1
             print(f"You have {self.num_lives} lives left")
+            print(self.word_guessed)
+            print("")
 
     def ask_for_input(self):
         while True: 
             guess = input("Please enter a single letter guess:")
             if len(guess) != 1 or not guess.isalpha() == True:              #Check whether letter guessed is single and alphabetical
-                print("Invalid letter. Please, enter a single alphabetical character")
+                print("Invalid letter. Please enter a single alphabetical character")
+                print("")
             elif guess in self.list_of_guesses:                             #Check if letter has already been guessed
                 print("You already tried that letter!")
+                print("")
             else:
                 self.list_of_guesses.append(guess)                          #Add guess to list of guesses
                 self.check_guess(guess)
@@ -44,7 +49,7 @@ def play_game(word_list):
     game = Hangman(word_list, num_lives)
 
     while True:
-        if num_lives == 0:
+        if game.num_lives == 0:
             print("You lost!")
             break
         elif game.num_letters == 0:
