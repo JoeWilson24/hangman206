@@ -39,9 +39,18 @@ class Hangman:
                 self.check_guess(guess)
             break
 
-test1=Hangman(["banana", "strawberry", "peach", "mango", "melon"])
+def play_game(word_list):
+    num_lives = 5
+    game = Hangman(word_list, num_lives)
 
-test1.ask_for_input()
+    while True:
+        if num_lives == 0:
+            print("You lost!")
+            break
+        elif game.num_letters == 0:
+            print("Congratulations, you won the game!")
+            break
+        else:
+            game.ask_for_input()
 
-
-
+play_game(word_list)
