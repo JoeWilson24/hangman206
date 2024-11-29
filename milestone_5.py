@@ -2,15 +2,15 @@ import random
 word_list = ["banana", "strawberry", "peach", "mango", "melon"]
 
 class Hangman:
-    def __init__(self, word_list, num_lives=5):
+    def __init__(self, word_list, num_lives=5):                                    #Defining the hangman class, initialising the class attributes
         self.word = random.choice(word_list)
         self.word_guessed = ['_' for random_fruit_letter in range(len(self.word))] #Creating a list of underscores for every letter in hidden word
         self.num_lives = num_lives
-        self.num_letters = int(len(set(self.word)))
+        self.num_letters = int(len(set(self.word)))                                #The number of unique letters in the word, made using the 'set' function
         self.word_list = word_list
         self.list_of_guesses = []
 
-    def check_guess(self,guess):
+    def check_guess(self,guess):                                            #Method to take a users guess and check if it's in the word
         lower_case_guess = (guess.lower())
         if lower_case_guess in self.word:
             print(f"Good guess! {lower_case_guess} is in the word.")
@@ -25,12 +25,12 @@ class Hangman:
         else:
             print(f"Sorry, {lower_case_guess} is not in the word. Try again.")
             print(f"Guessed letters: {self.list_of_guesses}")
-            self.num_lives -= 1
+            self.num_lives -= 1                                             #Reduce number of lives by 1 for each incorrect guess
             print(f"You have {self.num_lives} lives left")
             print(self.word_guessed)
             print("")
 
-    def ask_for_input(self):
+    def ask_for_input(self):                                                #Method to promp the user for a guess, then validate it, then call the check_guess method
         while True: 
             guess = input("Please enter a single letter guess:")
             if len(guess) != 1 or not guess.isalpha() == True:              #Check whether letter guessed is single and alphabetical
@@ -44,11 +44,11 @@ class Hangman:
                 self.check_guess(guess)
             break
 
-def play_game(word_list):
+def play_game(word_list):                                                   #Function to play the game with the assigned word list
     num_lives = 5
-    game = Hangman(word_list, num_lives)
+    game = Hangman(word_list, num_lives)                                    #Creates a hangman object, 'game'
 
-    while True:
+    while True:                                                             #Enters loop to check the number of lives and unique letters remaining, determining if the game is over or not
         if game.num_lives == 0:
             print("You lost!")
             break
@@ -58,4 +58,4 @@ def play_game(word_list):
         else:
             game.ask_for_input()
 
-play_game(word_list)
+play_game(word_list)                                                        #Initiates the game by calling the play_game function

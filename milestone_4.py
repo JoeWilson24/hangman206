@@ -2,11 +2,11 @@ import random
 word_list = ["banana", "strawberry", "peach", "mango", "melon"]
 
 class Hangman:
-    def __init__(self, word_list, num_lives=5):
+    def __init__(self, word_list, num_lives=5):                                    #Defining the hangman class, initialising the class attributes
         self.word = random.choice(word_list)
         self.word_guessed = ['_' for random_fruit_letter in range(len(self.word))] #Creating a list of underscores for every letter in hidden word
         self.num_lives = num_lives
-        self.num_letters = int(len(set(self.word)))
+        self.num_letters = int(len(set(self.word)))                                #The number of unique letters in the word, made using the 'set' function
         self.word_list = word_list
         self.list_of_guesses = []
 
@@ -24,7 +24,7 @@ class Hangman:
         else:
             print(f"Sorry, {lower_case_guess} is not in the word. Try again.")
             print(f"Guessed letters: {self.list_of_guesses}")
-            self.num_lives -= 1
+            self.num_lives -= 1                                             #Reduce number of lives by 1 for each incorrect guess
             print(f"You have {self.num_lives} lives left")
 
     def ask_for_input(self):
